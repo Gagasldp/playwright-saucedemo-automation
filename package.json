@@ -1,0 +1,29 @@
+{
+  "name": "playwright-saucedemo-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gagasldp/playwright-saucedemo-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gagasldp/playwright-saucedemo-automation/issues"
+  },
+  "homepage": "https://github.com/Gagasldp/playwright-saucedemo-automation#readme",
+  "dependencies": {
+    "playwright": "^1.54.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}
