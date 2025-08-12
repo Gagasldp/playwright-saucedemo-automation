@@ -13,4 +13,4 @@ Berikut hasil eksekusi automation test menggunakan Playwright:
 Hasil ini mencakup:
 1. Login sukses dengan kredensial valid
 2. Login gagal - password salah
-3. End-to-End checkout sukses
+3. End-to-End checkout sukses, add to car, remove frome cart, sort product
