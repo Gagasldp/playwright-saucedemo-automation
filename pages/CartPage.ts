@@ -7,8 +7,8 @@ export class CartPage {
     return this.page.locator('.cart_item');
   }
 
-  async removeItem(productName: string) {
-    await this.page.click(`[data-test="remove-${productName}"]`);
+  async removeItem(productId: string) {
+    await this.page.click(`[data-test="remove-${productId}"]`);
   }
 
   async checkout() {
