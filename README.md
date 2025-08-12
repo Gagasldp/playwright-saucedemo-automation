@@ -4,8 +4,8 @@ Berikut hasil eksekusi automation test menggunakan Playwright:
 
 ![Test Result Screenshot](assets/test-result.png)
 
-- **Total Test:** 3
-- **Passed:** 3
+- **Total Test:** 6
+- **Passed:** 6
 - **Failed:** 0
 - **Skipped:** 0
 - **Flaky:** 0
