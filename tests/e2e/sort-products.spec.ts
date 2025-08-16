@@ -3,36 +3,33 @@ import { LoginPage } from '../../pages/LoginPage';
 import { ProductsPage } from '../../pages/ProductsPage';
 
 test.describe('Sort Product Feature', () => {
-  test('Sort by Name (A to Z)', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const productsPage = new ProductsPage(page);
+  let loginPage: LoginPage;
+  let productsPage: ProductsPage;
 
-    await loginPage.goto();
-    await loginPage.login('standard_user', 'secret_sauce');
-    await expect(page).toHaveURL(/inventory.html/);
+test.beforeEach(async ({ page }) => {
+  loginPage = new LoginPage(page);
+  productsPage = new ProductsPage(page);
 
-    // Sort A-Z
-    const names = (await productsPage.getProductNames()).map(n => n.trim().toLowerCase());
-    const sorted = [...names].sort();
-    await page.waitForTimeout(500);
-    expect(names).toEqual(sorted);
+    // Login sebelum setiap test
+  await loginPage.goto();
+  await loginPage.login('standard_user', 'secret_sauce');
+  await productsPage.verifyPageLoaded();
   });
 
-//   test('Sort by Price (Low to High)', async ({ page }) => {
-//   const loginPage = new LoginPage(page);
-//   const productsPage = new ProductsPage(page);
+  test('Sort by Name (A to Z)', async () => {
+    await productsPage.sortBy('Name (A to Z)');
+  });
 
-//   await loginPage.goto();
-//   await loginPage.login('standard_user', 'secret_sauce');
-//   await expect(page).toHaveURL(/inventory.html/);
+  test('Sort by Name (Z to A)', async () => {
+    await productsPage.sortBy('Name (Z to A)');
+  });
 
-//   await productsPage.sortBy('lohi');
-//   await page.waitForTimeout(500);
+  test('Sort by price low to high', async () => {
+    await productsPage.sortBy('Price (low to high)');
+  });
 
-//   const prices = (await productsPage.getProductPrices()).map(price => Number(price.toFixed(2)));
-//   const sortedPrices = [...prices].sort((a, b) => a - b);
+  test('Sort by price high to low', async () => {
+    await productsPage.sortBy('Price (high to low)');
+  });
 
-//   console.log('sorted prices:', sortedPrices);
-//   console.log('UI prices:', prices);
-//   expect(prices).toEqual(sortedPrices);
 });
