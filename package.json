@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx playwright test",
+    "start": "npx playwright test --headed",
     "report": "npx playwright show-report"
   },
   "repository": {
