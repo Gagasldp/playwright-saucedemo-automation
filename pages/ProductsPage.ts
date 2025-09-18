@@ -7,6 +7,7 @@ export class ProductsPage {
   readonly sortDropdown: Locator;
   readonly productNames: Locator;
   readonly productPrices: Locator;
+  readonly productImages: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class ProductsPage {
     this.sortDropdown = page.locator('[data-test="product_sort_container"]');
     this.productNames = page.locator('.inventory_item_name');
     this.productPrices = page.locator('.inventory_item_price');
+    this.productImages = page.locator('.inventory_item_img');
   }
 
   /* ========== NAVIGATION & PAGE VERIFY ========== */
@@ -88,10 +90,6 @@ export class ProductsPage {
 
   await dropdown.selectOption(sortMap[optionText]);
 }
-
-
-
-
   /* ========== GET PRODUCT DATA ========== */
   async getProductNames(): Promise<string[]> {
     return await this.productNames.allTextContents();
@@ -100,5 +98,13 @@ export class ProductsPage {
   async getProductPrices(): Promise<number[]> {
     const prices = await this.productPrices.allTextContents();
     return prices.map(price => parseFloat(price.replace('$', '')));
+  }
+
+  /* ========== VERIFY PRODUCT IMAGES ========== */
+  async verifyProductImagesVisible() {
+    const imageCount = await this.productImages.count();
+    for (let i = 0; i < imageCount; i++) {
+      await expect(this.productImages.nth(i)).toBeVisible();
+    }
   }
 }
